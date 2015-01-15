@@ -19,7 +19,7 @@ The goal of this guide is to quickly bootstrap an [Amazon EC2](http://aws.amazon
 - Click on the `EC2` option and click the `Launch Instance` button.
 - We are now in the AMI (Amazon Machine Image) interface.  Select `Ubuntu Server 14.04 LTS`
 
-    ![alt Amazon Machine Image](./images/aws_ec2_ubuntu4.04.png)
+    ![alt Amazon Machine Image](https://raw.githubusercontent.com/chrisrzhou/RShiny-EC2Bootstrap/master/images/aws_ec2_ubuntu14.04.png)
 
 
 [(back to contents)](#contents)
