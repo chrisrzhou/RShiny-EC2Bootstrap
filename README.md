@@ -194,6 +194,11 @@ This guide would not be possible without the works and guides provided by previo
 - Shiny AWS EC2:
     - [Tyler Hunt's guide to set up Shiny AWS EC2](http://tylerhunt.co/2014/03/amazon-web-services-rstudio/)
     - [Custom AWS inbound rules](http://www.r-bloggers.com/deploying-shiny-server-on-amazon-some-troubleshoots-and-solutions/)
+- Personal Shiny AWS EC2 Examples:
+    - State Crime Rates ([EC2](http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/StateCrimeRates/) | [Github](https://github.com/chrisrzhou/RShiny-StateCrimeRates))
+    - Labor Force Statistics ([EC2](http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/LaborForceStatistics/) | [Github](https://github.com/chrisrzhou/RShiny-LaborForceStatistics))
+    - Box Office Mojo ([EC2](http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/BoxOfficeMojo/) | [Github](https://github.com/chrisrzhou/RShiny-BoxOfficeMojo))
+    - Power to Choose ([EC2](http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/PowerToChoose/) | [Github](https://github.com/chrisrzhou/RShiny-PowerToChoose))
 - Other resources:
     - [Stackoverflow](http://stackoverflow.com/)
     - [dplyr](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
