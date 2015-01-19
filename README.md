@@ -1,7 +1,7 @@
 # R Shiny EC2 Bootstrap
 The goal of this guide is to quickly bootstrap R [Shiny](http://shiny.rstudio.com/) on an [Amazon AWS EC2](http://aws.amazon.com/ec2/) instance.  We will also walk through a recommended workflow using Github for rapid development on a local machine and the EC2 server instance.
 
-    ![alt Amazon Machine Image](https://raw.githubusercontent.com/chrisrzhou/RShiny-EC2Bootstrap/master/images/aws_ec2_workflow.png)
+![alt Amazon Machine Image](https://raw.githubusercontent.com/chrisrzhou/RShiny-EC2Bootstrap/master/images/aws_ec2_workflow.png)
     
 This is an *opiniated* guide created for the following software versions:
 - `Ubuntu: 14.04 LTS`
