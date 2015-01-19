@@ -21,6 +21,7 @@ This is an *opiniated* guide created for the following software versions:
 * [Install Git](#install-git)
 * [Workflow Overview](#workflow-overview)
 * [Problematic Packages](#problematic-packages)
+* [Examples](#examples)
 * [Resources](#resources)
 
 ----------
@@ -189,16 +190,23 @@ This is an *opiniated* guide created for the following software versions:
 
 ----------
 
+## Examples
+Here are some project examples of Shiny EC2 instances that I have built and their respective Github codebase.
+- State Crime Rates ([EC2](http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/StateCrimeRates/) | [Github](https://github.com/chrisrzhou/RShiny-StateCrimeRates))
+- Labor Force Statistics ([EC2](http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/LaborForceStatistics/) | [Github](https://github.com/chrisrzhou/RShiny-LaborForceStatistics))
+- Box Office Mojo ([EC2](http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/BoxOfficeMojo/) | [Github](https://github.com/chrisrzhou/RShiny-BoxOfficeMojo))
+- Power to Choose ([EC2](http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/PowerToChoose/) | [Github](https://github.com/chrisrzhou/RShiny-PowerToChoose))
+
+[(back to contents)](#contents)
+
+----------
+
 ## Resources
-This guide would not be possible without the works and guides provided by previous people.  I'm listing some additional resources that are helpful for the general audience.
-- Shiny AWS EC2:
+This guide would not be possible without the works and guides provided by previous people.  I'm listing some additional resources that are helpful for the general audience.  Please contact me if there are any issues/corrections with this guide.  Thank you!
+
+- Shiny AWS EC2 Guides:
     - [Tyler Hunt's guide to set up Shiny AWS EC2](http://tylerhunt.co/2014/03/amazon-web-services-rstudio/)
     - [Custom AWS inbound rules](http://www.r-bloggers.com/deploying-shiny-server-on-amazon-some-troubleshoots-and-solutions/)
-- Personal Shiny AWS EC2 Examples:
-    - State Crime Rates ([EC2](http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/StateCrimeRates/) | [Github](https://github.com/chrisrzhou/RShiny-StateCrimeRates))
-    - Labor Force Statistics ([EC2](http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/LaborForceStatistics/) | [Github](https://github.com/chrisrzhou/RShiny-LaborForceStatistics))
-    - Box Office Mojo ([EC2](http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/BoxOfficeMojo/) | [Github](https://github.com/chrisrzhou/RShiny-BoxOfficeMojo))
-    - Power to Choose ([EC2](http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/PowerToChoose/) | [Github](https://github.com/chrisrzhou/RShiny-PowerToChoose))
 - Other resources:
     - [Stackoverflow](http://stackoverflow.com/)
     - [dplyr](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
