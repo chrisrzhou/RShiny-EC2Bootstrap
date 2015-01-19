@@ -171,8 +171,8 @@ This is an *opiniated* guide created for the following software versions:
 - Workflow Summary:
     1. Develop on your local machine with RStudio.
     2. Whenever you are ready to show your work to the world, you would `git push` your changes to your Github repository.
-    3. `git clone` the Github repository under the `/srv/shiny-server/` (this is the folder where `shiny-server` serves your application).
-    4. If there are changes to be made to your app, repeat steps 1 and 2 to `git push` updates to Github, and then perform a `git pull` in your EC2 instance to update your application.
+    3. Initiate your EC2 instance with the same codebase on Github by using `git clone` into `/srv/shiny-server/` (this is the folder where `shiny-server` serves your application).
+    4. If there are changes to be made to your app, repeat steps 1 and 2 to `git push` updates to Github from your local machine, and then perform a `git pull` in your EC2 instance to update your application in EC2.
 
 [(back to contents)](#contents)
 
