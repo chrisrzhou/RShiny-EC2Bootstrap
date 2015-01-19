@@ -180,7 +180,7 @@ This is an *opiniated* guide created for the following software versions:
 
 ## Problematic Packages
 - Since our EC2 instance is completely barebones, installing various packages might be problematic due to a lack of libraries that EC2 comes with.
-- My recommendation is to do searches on [Stackoverflow](http://stackoverflow.com/) and [Google](http://www.google.com) using keywords such as `EC2`, `package-bane`, `installation`, `R`.
+- My recommendation is to do searches on [Stackoverflow](http://stackoverflow.com/) and [Google](http://www.google.com) using keywords such as `EC2`, `package-name`, `installation`, `R`.
 - You could run into issues with missing `Python` libraries and version requirements for `R` and various packages, but most of them can be solved by searching on Stackoverflow and Google.
 - You could also encounter issues that result from the limited memory allocated in the EC2 instance, which would not complete installations of some packages (e.g. `dplyr`, `ggvis`).  If this is the case, the solution would be to install these packages on your local machine, and grab the uncompiled files in the local machine `R` libraries and copy them over to your EC2 `R` libraries.  You have a few ways to transfer files from local machine to EC2 and I will refer you to Stackoverflow and Google on how to do so.
 - Stackoverflow + Goole are most definitely the best teachers and guides out there for resolving problematic packages.  My job here is to just inform on some of the issues you may encounter :)
