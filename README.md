@@ -1,7 +1,7 @@
 # R Shiny EC2 Bootstrap
 The goal of this guide is to quickly bootstrap R [Shiny](http://shiny.rstudio.com/) on an [Amazon AWS EC2](http://aws.amazon.com/ec2/) instance.  We will also walk through a recommended workflow using Github for rapid development on a local machine and the EC2 server instance.
 
-![alt Amazon Machine Image](https://raw.githubusercontent.com/chrisrzhou/RShiny-EC2Bootstrap/master/images/aws_ec2_workflow.png)
+![alt Amazon Machine Image](https://s3-us-west-1.amazonaws.com/chrisrzhou/github/images/rshiny-ec2bootstrap/aws_ec2_workflow.png)
     
 This is an *opiniated* guide created for the following software versions:
 - `Ubuntu: 14.04 LTS`
@@ -31,7 +31,7 @@ This is an *opiniated* guide created for the following software versions:
 - Click on `Compute > EC2` (near the top left of the screen) and click the `Launch Instance` button in the `Create Instance` section of the page.
 - We are now in the AMI (Amazon Machine Image) interface.  Select `Ubuntu Server 14.04 LTS`.
 
-    ![alt Amazon Machine Image](https://raw.githubusercontent.com/chrisrzhou/RShiny-EC2Bootstrap/master/images/aws_ec2_ubuntu14.04.png)
+    ![alt Amazon Machine Image](https://s3-us-west-1.amazonaws.com/chrisrzhou/github/images/rshiny-ec2bootstrap/aws_ec2_ubuntu14.04.png)
     
 - We will choose the default `t2.micro` instance.  Accept all the default settings for the next few steps:
     - Click `Next: Configure Instance Details`
@@ -41,12 +41,12 @@ This is an *opiniated* guide created for the following software versions:
 - When we arrive to `Configure Security Group`, we will need to add a few more security groups to open our EC2 instance to the world when we later build applications with Shiny.
 - Add the following rules using the `Add Rule` buttons.  This registers and opens the ports `3838` and `80` that Shiny will use later.
 
-    ![alt Amazon Machine Image](https://raw.githubusercontent.com/chrisrzhou/RShiny-EC2Bootstrap/master/images/aws_ec2_configure_security_groups_complete.png)
+    ![alt Amazon Machine Image](https://s3-us-west-1.amazonaws.com/chrisrzhou/github/images/rshiny-ec2bootstrap/aws_ec2_configure_security_groups_complete.png)
     
 - We are ready to launch our EC2 instance now.
 - Click on the `Review and Launch` button, and `Launch` your instance!
 
-    ![alt Amazon Machine Image](https://raw.githubusercontent.com/chrisrzhou/RShiny-EC2Bootstrap/master/images/aws_ec2_launch.png)
+    ![alt Amazon Machine Image](https://s3-us-west-1.amazonaws.com/chrisrzhou/github/images/rshiny-ec2bootstrap/aws_ec2_launch.png)
 
 [(back to contents)](#contents)
 
@@ -56,7 +56,7 @@ This is an *opiniated* guide created for the following software versions:
 - With our EC2 instance set up, we need to register the key provided to us from Amazon with our local machine. (*Note that only one EC2 key can be registered to one machine.*)
 - Amazon will prompty you to create a new key pair.  For this guide, we shall name the keypair `shinybootstrap`.
 
-    ![alt Amazon Machine Image](https://raw.githubusercontent.com/chrisrzhou/RShiny-EC2Bootstrap/master/images/aws_ec2_create_keypair.png)
+    ![alt Amazon Machine Image](https://s3-us-west-1.amazonaws.com/chrisrzhou/github/images/rshiny-ec2bootstrap/aws_ec2_create_keypair.png)
     
 - Download the `shinybootstrap.pem` key pair.  We recommend that you place your `shinybootstrap.pem` key pair in a safe folder, but for purposes of this guide, we will assume that you are placing the file in a folder under the home directory `~/sshKeys`.
     
@@ -80,7 +80,7 @@ This is an *opiniated* guide created for the following software versions:
     
 - where `public_dns_name` is the name of your EC2 instance created e.g. `ec2-54-183-2-10.us-west-1.compute.amazonaws.com` (see below).
 
-    ![alt Amazon Machine Image](https://raw.githubusercontent.com/chrisrzhou/RShiny-EC2Bootstrap/master/images/aws_ec2_dns_name.png)
+    ![alt Amazon Machine Image](https://s3-us-west-1.amazonaws.com/chrisrzhou/github/images/rshiny-ec2bootstrap/aws_ec2_dns_name.png)
     
 - Restart your terminal to access the changes and you should connect to your EC2 instance simply by typing `awslogin` in the terminal console.
 
@@ -167,7 +167,7 @@ This is an *opiniated* guide created for the following software versions:
 - A big part of the EC2 R Shiny workflow is to develop with RStudio on your local machines and use Github as a repository station for transferring data between your local machine and EC2 instance.  Make sure that you are familiar with the basic `git` commands: `pull`, `push`, `clone`.  It's going to be a big part of the development cycle.
 - The following diagram outlines the overall workflow of the EC2 R Shiny workflow:
     
-    ![alt Amazon Machine Image](https://raw.githubusercontent.com/chrisrzhou/RShiny-EC2Bootstrap/master/images/aws_ec2_workflow.png)
+    ![alt Amazon Machine Image](https://s3-us-west-1.amazonaws.com/chrisrzhou/github/images/rshiny-ec2bootstrap/aws_ec2_workflow.png)
 
 - Workflow Summary:
     1. Develop on your local machine with RStudio.
