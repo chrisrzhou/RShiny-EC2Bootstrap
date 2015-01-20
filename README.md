@@ -1,7 +1,7 @@
 # R Shiny EC2 Bootstrap
 The goal of this guide is to quickly bootstrap R [Shiny](http://shiny.rstudio.com/) on an [Amazon AWS EC2](http://aws.amazon.com/ec2/) instance.  We will also walk through a recommended workflow using Github for rapid development on a local machine and the EC2 server instance.
 
-![alt Amazon Machine Image](https://raw.githubusercontent.com/chrisrzhou/RShiny-EC2Bootstrap/master/images/aws_ec2_workflow.svg)
+![alt Amazon Machine Image](https://raw.githubusercontent.com/chrisrzhou/RShiny-EC2Bootstrap/master/images/aws_ec2_workflow.png)
     
 This is an *opiniated* guide created for the following software versions:
 - `Ubuntu: 14.04 LTS`
@@ -167,7 +167,7 @@ This is an *opiniated* guide created for the following software versions:
 - A big part of the EC2 R Shiny workflow is to develop with RStudio on your local machines and use Github as a repository station for transferring data between your local machine and EC2 instance.  Make sure that you are familiar with the basic `git` commands: `pull`, `push`, `clone`.  It's going to be a big part of the development cycle.
 - The following diagram outlines the overall workflow of the EC2 R Shiny workflow:
     
-    ![alt Amazon Machine Image](https://raw.githubusercontent.com/chrisrzhou/RShiny-EC2Bootstrap/master/images/aws_ec2_workflow.svg)
+    ![alt Amazon Machine Image](https://raw.githubusercontent.com/chrisrzhou/RShiny-EC2Bootstrap/master/images/aws_ec2_workflow.png)
 
 - Workflow Summary:
     1. Develop on your local machine with RStudio.
