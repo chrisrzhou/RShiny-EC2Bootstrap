@@ -60,7 +60,7 @@ This is an *opiniated* guide created for the following software versions:
     
 - Download the `shinybootstrap.pem` key pair.  We recommend that you place your `shinybootstrap.pem` key pair in a safe folder, but for purposes of this guide, we will assume that you are placing the file in a folder under the home directory `~/sshKeys`.
     
-    ```
+    ```sh
     # create sshKeys folder in home directory
     mkdir ~/sshKeys
     
@@ -74,7 +74,7 @@ This is an *opiniated* guide created for the following software versions:
 - **Note**: If you ever run into a `Permission denied (publickey)` error message, this is because you are not able to access the `.pem` file as a superuser.  Make sure that you have granted sudo access to the file using the command `chmod 400` as outlined above.
 - It is useful to create an alias to access the EC2 instance, otherwise we would be typing a long command to access our EC2 instance each time.  For this guide, we will create an alias `awslogin` and register this in the `bash_aliases` file using the `echo "blahblahablah" >> ~/.bash_aliases` command:
    
-    ```
+    ```sh
     echo "alias awslogin='ssh -i ~/sshKeys/shinybootstrap.pem ubuntu@public_dns_name'" >> ~/.bash_aliases
     ```
     
@@ -92,14 +92,14 @@ This is an *opiniated* guide created for the following software versions:
 - Phew! The tough parts are over, we can now move onto installing `R` in our EC2 instance!
 - First, create a superuser root password by entering a password in the EC2 command line.
     
-    ```
+    ```sh
     sudo password root
     su
     ```
     
 - Update your barebones EC2 virtual machine and install R:
     
-    ```
+    ```sh
     sudo apt-get update
     sudo apt-get install r-base-dev
     sudo apt-get install libcurl4-openssl-dev
@@ -115,7 +115,7 @@ This is an *opiniated* guide created for the following software versions:
 - Base R is argubly boring, so let's get started with installing a few important packages, `shiny` being an obviously shiny option.  (*while installing these packages, make sure you are in `su` mode and I highly recommend installing them from the `0-Cloud` CRAN repository*)
 - From your EC2 command line:
     
-    ```
+    ```sh
     R       # enter the R console
     
     install.packages("shiny")
@@ -134,7 +134,7 @@ This is an *opiniated* guide created for the following software versions:
 - `shiny` requires a server to run.  The next step is to setup `shiny-server` in our EC2 instance.
 - Run the following commands in EC2:
     
-    ```
+    ```sh
     sudo apt-get install gdebi-core
     wget http://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.0.0.42-amd64.deb
     sudo gdebi shiny-server-1.0.0.42-amd64.deb
@@ -151,7 +151,7 @@ This is an *opiniated* guide created for the following software versions:
 - `git` is probably one of the greatest creations and tools that you can use in your life, so it's good to include it in our EC2 instance.
 - Installing `git` is as simple as typing:
    
-    ```
+    ```sh
     sudo apt-get install git
     ```
     
