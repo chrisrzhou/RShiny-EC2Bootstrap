@@ -1,5 +1,5 @@
 # R Shiny EC2 Bootstrap
-The goal of this guide is to quickly bootstrap R [Shiny](http://shiny.rstudio.com/) on an [Amazon AWS EC2](http://aws.amazon.com/ec2/) instance.  We will also walk through a recommended workflow using Github for rapid development on a local machine and the EC2 server instance.
+The goal of this guide is to quickly bootstrap R <a href="http://shiny.rstudio.com/" target="_blank">Shiny</a> on an <a href="http://aws.amazon.com/ec2/" target="_blank">Amazon AWS EC2</a> instance.  We will also walk through a recommended workflow using Github for rapid development on a local machine and the EC2 server instance.
 
 ![alt Amazon Machine Image](https://s3-us-west-1.amazonaws.com/chrisrzhou/github/images/rshiny-ec2bootstrap/aws_ec2_workflow.png)
     
@@ -27,7 +27,7 @@ This is an *opiniated* guide created for the following software versions:
 ----------
 
 ## Launch EC2
-- Create an [AWS account](https://aws.amazon.com/) and login to the [console](https://console.aws.amazon.com).
+- Create an <a href="https://aws.amazon.com/" target="_blank">AWS account</a> and login to the <a href="https://console.aws.amazon.com" target="_blank">console</a>.
 - Click on `Compute > EC2` (near the top left of the screen) and click the `Launch Instance` button in the `Create Instance` section of the page.
 - We are now in the AMI (Amazon Machine Image) interface.  Select `Ubuntu Server 14.04 LTS`.
 
@@ -156,8 +156,8 @@ This is an *opiniated* guide created for the following software versions:
     ```
     
 - `git` is very critical in our Shiny EC2 workflow.  If you are not familiar with using `git`, here are some great resources to get on speed:
-    - [Codeschool](https://www.codeschool.com/courses/try-git)
-    - [Official Git site](http://git-scm.com/)
+    - <a href="https://www.codeschool.com/courses/try-git" target="_blank">Codeschool</a>
+    - <a href="http://git-scm.com/" target="_blank">Official Git site</a>
 
 [(back to contents)](#contents)
 
@@ -181,7 +181,7 @@ This is an *opiniated* guide created for the following software versions:
 
 ## Problematic Packages
 - Since our EC2 instance is completely barebones, installing various packages might be problematic due to a lack of libraries that EC2 comes with.
-- My recommendation is to do searches on [Stackoverflow](http://stackoverflow.com/) and [Google](http://www.google.com) using keywords such as `EC2`, `package-name`, `installation`, `R`.
+- My recommendation is to do searches on <a href="http://stackoverflow.com/" target="_blank">Stackoverflow</a> and <a href="http://www.google.com" target="_blank">Google</a> using keywords such as `EC2`, `package-name`, `installation`, `R`.
 - You could run into issues with missing `Python` libraries and version requirements for `R` and various packages, but most of them can be solved by searching on Stackoverflow and Google.
 - You could also encounter issues that result from the limited memory allocated in the EC2 instance, which would not complete installations of some packages (e.g. `dplyr`, `ggvis`).  If this is the case, the solution would be to install these packages on your local machine, and grab the uncompiled files in the local machine `R` libraries and copy them over to your EC2 `R` libraries.  You have a few ways to transfer files from local machine to EC2 and I will refer you to Stackoverflow and Google on how to do so.
 - Stackoverflow + Goole are most definitely the best teachers and guides out there for resolving problematic packages.  My job here is to just inform on some of the issues you may encounter :)
@@ -192,10 +192,10 @@ This is an *opiniated* guide created for the following software versions:
 
 ## Examples
 Here are some project examples of Shiny EC2 instances that I have built and their respective Github codebase.
-- State Crime Rates ([EC2](http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/StateCrimeRates/) | [Github](https://github.com/chrisrzhou/RShiny-StateCrimeRates))
-- Labor Force Statistics ([EC2](http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/LaborForceStatistics/) | [Github](https://github.com/chrisrzhou/RShiny-LaborForceStatistics))
-- Box Office Mojo ([EC2](http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/BoxOfficeMojo/) | [Github](https://github.com/chrisrzhou/RShiny-BoxOfficeMojo))
-- Power to Choose ([EC2](http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/PowerToChoose/) | [Github](https://github.com/chrisrzhou/RShiny-PowerToChoose))
+- State Crime Rates (<a href="http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/StateCrimeRates/" target="_blank">EC2</a> | <a href="https://github.com/chrisrzhou/RShiny-StateCrimeRates" target="_blank">Github</a>)
+- Labor Force Statistics (<a href="http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/LaborForceStatistics/" target="_blank">EC2</a> | <a href="https://github.com/chrisrzhou/RShiny-LaborForceStatistics" target="_blank">Github</a>)
+- Box Office Mojo (<a href="http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/BoxOfficeMojo/" target="_blank">EC2</a> | <a href="https://github.com/chrisrzhou/RShiny-BoxOfficeMojo" target="_blank">Github</a>)
+- Power to Choose (<a href="http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/PowerToChoose/" target="_blank">EC2</a>) | <a href="https://github.com/chrisrzhou/RShiny-PowerToChoose" target="_blank">Github</a>)
 
 [(back to contents)](#contents)
 
@@ -205,11 +205,11 @@ Here are some project examples of Shiny EC2 instances that I have built and thei
 This guide would not be possible without the works and guides provided by previous people.  I'm listing some additional resources that are helpful for the general audience.  Please contact me if there are any issues/corrections with this guide.  Thank you!
 
 - Shiny AWS EC2 Guides:
-    - [Tyler Hunt's guide to set up Shiny AWS EC2](http://tylerhunt.co/2014/03/amazon-web-services-rstudio/)
-    - [Custom AWS inbound rules](http://www.r-bloggers.com/deploying-shiny-server-on-amazon-some-troubleshoots-and-solutions/)
+    - <a href="http://tylerhunt.co/2014/03/amazon-web-services-rstudio/" target="_blank">Tyler Hunt's guide to set up Shiny AWS EC2</a>
+    - <a href="http://www.r-bloggers.com/deploying-shiny-server-on-amazon-some-troubleshoots-and-solutions/" target="_blank">Custom AWS inbound rules</a>
 - Other resources:
-    - [Stackoverflow](http://stackoverflow.com/)
-    - [dplyr](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
+    - <a href="http://stackoverflow.com/" target="_blank">Stackoverflow</a>
+    - <a href="http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html" target="_blank">dplyr</a>
 
 [(back to contents)](#contents)
 
