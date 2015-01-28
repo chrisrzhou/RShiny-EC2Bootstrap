@@ -48,7 +48,7 @@ This is an *opiniated* guide created for the following software versions:
 
     ![alt Amazon Machine Image](https://s3-us-west-1.amazonaws.com/chrisrzhou/github/images/rshiny-ec2bootstrap/aws_ec2_launch.png)
 
-[(back to contents)](#contents)
+<sub>([back to contents](#contents))</sub>
 
 ----------
 
@@ -84,7 +84,7 @@ This is an *opiniated* guide created for the following software versions:
     
 - Restart your terminal to access the changes and you should connect to your EC2 instance simply by typing `awslogin` in the terminal console.
 
-[(back to contents)](#contents)
+<sub>([back to contents](#contents))</sub>
 
 ----------
 
@@ -107,7 +107,7 @@ This is an *opiniated* guide created for the following software versions:
     
 - R is now successfuly installed!
 
-[(back to contents)](#contents)
+<sub>([back to contents](#contents))</sub>
 
 ----------
 
@@ -126,7 +126,7 @@ This is an *opiniated* guide created for the following software versions:
 - A few other packages are highly recommended but you might encounter issues installing certain packages due to memory limitations available on the EC2 instance or missing libraries in our EC2 instance.  For more details, please refer to the **[Problematic Packages](#problematic-packages)** section for a brief outline.
 - Other than that, you can come back anytime in the future to install R-packages by logging in with `su` and installing R packages via the command line.
 
-[(back to contents)](#contents)
+<sub>([back to contents](#contents))</sub>
 
 ----------
 
@@ -143,7 +143,7 @@ This is an *opiniated* guide created for the following software versions:
 - And we're done!
 
 
-[(back to contents)](#contents)
+<sub>([back to contents](#contents))</sub>
 
 ----------
 
@@ -159,7 +159,7 @@ This is an *opiniated* guide created for the following software versions:
     - <a href="https://www.codeschool.com/courses/try-git" target="_blank">Codeschool</a>
     - <a href="http://git-scm.com/" target="_blank">Official Git site</a>
 
-[(back to contents)](#contents)
+<sub>([back to contents](#contents))</sub>
 
 ----------
 
@@ -175,7 +175,7 @@ This is an *opiniated* guide created for the following software versions:
     3. Initiate your EC2 instance with the same codebase on Github by using `git clone` into `/srv/shiny-server/` (this is the folder where `shiny-server` serves your application).
     4. If there are changes to be made to your app, repeat steps 1 and 2 to `git push` updates to Github from your local machine, and then perform a `git pull` in your EC2 instance to update your application in EC2.
 
-[(back to contents)](#contents)
+<sub>([back to contents](#contents))</sub>
 
 ----------
 
@@ -186,7 +186,7 @@ This is an *opiniated* guide created for the following software versions:
 - You could also encounter issues that result from the limited memory allocated in the EC2 instance, which would not complete installations of some packages (e.g. `dplyr`, `ggvis`).  If this is the case, the solution would be to install these packages on your local machine, and grab the uncompiled files in the local machine `R` libraries and copy them over to your EC2 `R` libraries.  You have a few ways to transfer files from local machine to EC2 and I will refer you to Stackoverflow and Google on how to do so.
 - Stackoverflow + Goole are most definitely the best teachers and guides out there for resolving problematic packages.  My job here is to just inform on some of the issues you may encounter :)
 
-[(back to contents)](#contents)
+<sub>([back to contents](#contents))</sub>
 
 ----------
 
@@ -197,7 +197,7 @@ Here are some project examples of Shiny EC2 instances that I have built and thei
 - Box Office Mojo (<a href="http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/BoxOfficeMojo/" target="_blank">EC2</a> | <a href="https://github.com/chrisrzhou/RShiny-BoxOfficeMojo" target="_blank">Github</a>)
 - Power to Choose (<a href="http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/PowerToChoose/" target="_blank">EC2</a>) | <a href="https://github.com/chrisrzhou/RShiny-PowerToChoose" target="_blank">Github</a>)
 
-[(back to contents)](#contents)
+<sub>([back to contents](#contents))</sub>
 
 ----------
 
@@ -211,6 +211,6 @@ This guide would not be possible without the works and guides provided by previo
     - <a href="http://stackoverflow.com/" target="_blank">Stackoverflow</a>
     - <a href="http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html" target="_blank">dplyr</a>
 
-[(back to contents)](#contents)
+<sub>([back to contents](#contents))</sub>
 
 ----------
