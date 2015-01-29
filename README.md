@@ -8,7 +8,7 @@ This is an *opiniated* guide created for the following software versions:
 - `R: 3.1.2`
 - `Shiny Server: 1.0.0`
 
-*For other versions, please refer to the other github versions of the project repository.*
+*For other software versions, please make sure to check the version numbers used in the installations (e.g. see [Install Shiny Server](#install-shiny-server) section on installing different versions of shiny-server).*
 
 ----------
 
@@ -140,6 +140,7 @@ This is an *opiniated* guide created for the following software versions:
     sudo gdebi shiny-server-1.0.0.42-amd64.deb
     
     ```
+- **NOTE:** You can install a different version of `shiny-server` in the above command prompt.  At the point of this writing, `shiny-server-1.3.0.403` is <a href="http://www.rstudio.com/products/shiny/download-server/" target="_blank">out</a>, so you can simply adjust the above commands to use the right version for the installations.
 - And we're done!
 
 
