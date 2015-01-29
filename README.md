@@ -6,7 +6,7 @@ The goal of this guide is to quickly bootstrap R <a href="http://shiny.rstudio.c
 This is an *opiniated* guide created for the following software versions:
 - `Ubuntu: 14.04 LTS`
 - `R: 3.1.2`
-- `Shiny Server: 1.0.0`
+- `shiny-server: 1.3.0.403`
 
 *For other software versions, please make sure to check the version numbers used in the installations (e.g. see [Install Shiny Server](#install-shiny-server) section on installing different versions of shiny-server).*
 
@@ -39,7 +39,7 @@ This is an *opiniated* guide created for the following software versions:
     - Click `Next: Tag Instance`
     - Click `Next Configure Security Group`
 - When we arrive to `Configure Security Group`, we will need to add a few more security groups to open our EC2 instance to the world when we later build applications with Shiny.
-- Add the following rules using the `Add Rule` buttons.  This registers and opens the ports `3838` and `80` that Shiny will use later.
+- Add the following rules using the `Add Rule` buttons.  This registers and opens the ports `3838` and `80` that Shiny will use later.  By default, Shiny will listen on the `3838` port, but keeping the default HTTP listening port `80` open is always a useful option (In the [Install Shiny Server](#install-shiny-server) section, we go through changing the `shiny-server` configurations to listen on the default `80` port, which removes the need to specify a port number in your URL).
 
     ![alt Amazon Machine Image](https://s3-us-west-1.amazonaws.com/chrisrzhou/github/images/rshiny-ec2bootstrap/aws_ec2_configure_security_groups_complete.png)
     
@@ -71,17 +71,18 @@ This is an *opiniated* guide created for the following software versions:
     chmod 400 ~/sshKeys/shinybootstrap.pem
     ```
     
-- **Note**: If you ever run into a `Permission denied (publickey)` error message, this is because you are not able to access the `.pem` file as a superuser.  Make sure that you have granted sudo access to the file using the command `chmod 400` as outlined above.
+- **NOTE**: If you ever run into a `Permission denied (publickey)` error message, this is because you are not able to access the `.pem` file as a superuser.  Make sure that you have granted sudo access to the file using the command `chmod 400` as outlined above.
 - It is useful to create an alias to access the EC2 instance, otherwise we would be typing a long command to access our EC2 instance each time.  For this guide, we will create an alias `awslogin` and register this in the `bash_aliases` file using the `echo "blahblahablah" >> ~/.bash_aliases` command:
    
     ```sh
     echo "alias awslogin='ssh -i ~/sshKeys/shinybootstrap.pem ubuntu@public_dns_name'" >> ~/.bash_aliases
     ```
     
-- where `public_dns_name` is the name of your EC2 instance created e.g. `ec2-54-183-2-10.us-west-1.compute.amazonaws.com` (see below).
+- where `public_dns_name` is the public DNS name of your EC2 instance created e.g. `ec2-54-183-2-10.us-west-1.compute.amazonaws.com` or the public IP itself `54.183.2.10`
 
     ![alt Amazon Machine Image](https://s3-us-west-1.amazonaws.com/chrisrzhou/github/images/rshiny-ec2bootstrap/aws_ec2_dns_name.png)
     
+- **NOTE:** The public DNS name and public IP may not be static/permanent, e.g. their values can change when `shiny-server` restarts.  For a full permanent solution to creating a `bash_alias`, you would need to create an <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html" target="_blank">Elastic IP</a> (but we will defer that for the readers to the Amazon guide if readers wish to research the details).
 - Restart your terminal to access the changes and you should connect to your EC2 instance simply by typing `awslogin` in the terminal console.
 
 <sub>([back to contents](#contents))</sub>
@@ -89,7 +90,7 @@ This is an *opiniated* guide created for the following software versions:
 ----------
 
 ## Install R
-- Phew! The tough parts are over, we can now move onto installing `R` in our EC2 instance!
+- Phew! The tough parts are over, we can now move onto installing R in our EC2 instance!
 - First, create a superuser root password by entering a password in the EC2 command line.
     
     ```sh
@@ -136,11 +137,22 @@ This is an *opiniated* guide created for the following software versions:
     
     ```sh
     sudo apt-get install gdebi-core
-    wget http://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.0.0.42-amd64.deb
-    sudo gdebi shiny-server-1.0.0.42-amd64.deb
-    
+    wget http://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.3.0.403-amd64.deb
+    sudo gdebi shiny-server-1.3.0.403-amd64.deb
     ```
-- **NOTE:** You can install a different version of `shiny-server` in the above command prompt.  At the point of this writing, `shiny-server-1.3.0.403` is <a href="http://www.rstudio.com/products/shiny/download-server/" target="_blank">out</a>, so you can simply adjust the above commands to use the right version for the installations.
+
+- **NOTE:** You can install a different version of `shiny-server` in the above command prompt by adjusting the `shiny-server-version_number` in the `wget` and `gdebi` commands above.  You can check the official <a href="http://www.rstudio.com/products/shiny/download-server/" target="_blank">RStudio</a> site for instructions and latest version releases.
+- **OPTIONAL:** Change the listening port from `3838` to default `80`
+    - At this point, your applications will run on the port `http://domain:3838/`.  We can take the time to make an easy change to the `shiny-server` `config` file to listen to the default port at `80`.  This will allow our future apps to be accessed without specifying a port number by simply going to `http://domain/`
+    - Execute the following commands in your EC2 instance:
+    
+    ```sh
+    cd /etc/shiny-server/ 
+    sudo nano shiny-server.conf
+    ```
+    
+    - At this point, you can use a text editor (unfortunately we can only use CLI and non-GUI text editors) to change the line `listen 3838;` to `listen 80;`
+    - Makes sure to save the changes and you can now access your shiny instances without specifying the `3838` port number!
 - And we're done!
 
 
@@ -183,8 +195,8 @@ This is an *opiniated* guide created for the following software versions:
 ## Problematic Packages
 - Since our EC2 instance is completely barebones, installing various packages might be problematic due to a lack of libraries that EC2 comes with.
 - My recommendation is to do searches on <a href="http://stackoverflow.com/" target="_blank">Stackoverflow</a> and <a href="http://www.google.com" target="_blank">Google</a> using keywords such as `EC2`, `package-name`, `installation`, `R`.
-- You could run into issues with missing `Python` libraries and version requirements for `R` and various packages, but most of them can be solved by searching on Stackoverflow and Google.
-- You could also encounter issues that result from the limited memory allocated in the EC2 instance, which would not complete installations of some packages (e.g. `dplyr`, `ggvis`).  If this is the case, the solution would be to install these packages on your local machine, and grab the uncompiled files in the local machine `R` libraries and copy them over to your EC2 `R` libraries.  You have a few ways to transfer files from local machine to EC2 and I will refer you to Stackoverflow and Google on how to do so.
+- You could run into issues with missing Python libraries and version requirements for R and various packages, but most of them can be solved by searching on Stackoverflow and Google.
+- You could also encounter issues that result from the limited memory allocated in the EC2 instance, which would not complete installations of some packages (e.g. `dplyr`, `ggvis`).  If this is the case, the solution would be to install these packages on your local machine, and grab the uncompiled files in the local machine `R` libraries and copy them over to your EC2 R libraries.  You have a few ways to transfer files from local machine to EC2 and I will refer you to Stackoverflow and Google on how to do so.
 - Stackoverflow + Goole are most definitely the best teachers and guides out there for resolving problematic packages.  My job here is to just inform on some of the issues you may encounter :)
 
 <sub>([back to contents](#contents))</sub>
@@ -193,10 +205,26 @@ This is an *opiniated* guide created for the following software versions:
 
 ## Examples
 Here are some project examples of Shiny EC2 instances that I have built and their respective Github codebase.
-- State Crime Rates (<a href="http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/StateCrimeRates/" target="_blank">EC2</a> | <a href="https://github.com/chrisrzhou/RShiny-StateCrimeRates" target="_blank">Github</a>)
-- Labor Force Statistics (<a href="http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/LaborForceStatistics/" target="_blank">EC2</a> | <a href="https://github.com/chrisrzhou/RShiny-LaborForceStatistics" target="_blank">Github</a>)
-- Box Office Mojo (<a href="http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/BoxOfficeMojo/" target="_blank">EC2</a> | <a href="https://github.com/chrisrzhou/RShiny-BoxOfficeMojo" target="_blank">Github</a>)
-- Power to Choose (<a href="http://ec2-54-183-164-175.us-west-1.compute.amazonaws.com:3838/PowerToChoose/" target="_blank">EC2</a>) | <a href="https://github.com/chrisrzhou/RShiny-PowerToChoose" target="_blank">Github</a>)
+- State Crime Rates 
+<sub>
+(<a href="http://shiny.vis.datanaut.io/StateCrimeRates/" target="_blank">EC2</a> | 
+<a href="https://github.com/chrisrzhou/RShiny-StateCrimeRates" target="_blank">Github</a>)
+</sub>
+- Labor Force Statistics 
+<sub>
+(<a href="http://shiny.vis.datanaut.io/LaborForceStatistics/" target="_blank">EC2</a> | 
+<a href="https://github.com/chrisrzhou/RShiny-LaborForceStatistics" target="_blank">Github</a>)
+</sub>
+- Box Office Mojo 
+<sub>
+(<a href="http://shiny.vis.datanaut.io/BoxOfficeMojo/" target="_blank">EC2</a> | 
+<a href="https://github.com/chrisrzhou/RShiny-BoxOfficeMojo" target="_blank">Github</a>)
+</sub>
+- Power to Choose 
+<sub>
+(<a href="http://shiny.vis.datanaut.io/PowerToChoose/" target="_blank">EC2</a>) | 
+<a href="https://github.com/chrisrzhou/RShiny-PowerToChoose" target="_blank">Github</a>)
+</sub>
 
 <sub>([back to contents](#contents))</sub>
 
@@ -209,6 +237,9 @@ This guide would not be possible without the works and guides provided by previo
     - <a href="http://tylerhunt.co/2014/03/amazon-web-services-rstudio/" target="_blank">Tyler Hunt's guide to set up Shiny AWS EC2</a>
     - <a href="http://www.r-bloggers.com/deploying-shiny-server-on-amazon-some-troubleshoots-and-solutions/" target="_blank">Custom AWS inbound rules</a>
 - Other resources:
+    - <a href="http://rstudio.github.io/shiny-server/latest/" target="_blank">Official RStudio shiny-server guide</a>
+    - <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html" target="_blank">Creating ElasticIP for maintaining "permanent" IP addresses</a>
+    - <a href="http://aws.amazon.com/route53/" target="_blank">AWS Route 53 to rename EC2 instances to domain address</a>
     - <a href="http://stackoverflow.com/" target="_blank">Stackoverflow</a>
     - <a href="http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html" target="_blank">dplyr</a>
 
