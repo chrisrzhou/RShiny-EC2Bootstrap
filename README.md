@@ -95,8 +95,7 @@ different versions of shiny-server).*
     # create sshKeys folder in home directory
     mkdir ~/sshKeys
     
-    # navigate to your .pem directory and move the .pem file to the sshKeys
-    folder
+    # navigate to your .pem directory and move the .pem file to the sshKeys folder
     mv shinybootstrap.pem ~/sshKeys
     
     # grant sudo access to .pem file
