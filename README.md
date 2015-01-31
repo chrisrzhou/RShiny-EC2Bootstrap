@@ -116,8 +116,7 @@ different versions of shiny-server).*
         "blahblahablah" >> ~/.bash_aliases` command:
    
         ```bash
-        echo "alias awslogin='ssh -i ~/sshKeys/shinybootstrap.pem 
-        ubuntu@public_dns_name'" >> ~/.bash_aliases
+        echo "alias awslogin='ssh -i ~/sshKeys/shinybootstrap.pem ubuntu@public_dns_name'" >> ~/.bash_aliases
         ```
     
     -   where `public_dns_name` is the public DNS name of your EC2 instance
