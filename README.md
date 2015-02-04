@@ -341,9 +341,9 @@ issues/corrections with this guide.  Thank you!
 [example4-github]: https://github.com/chrisrzhou/RShiny-PowerToChoose
 
 <!-- s3 image links -->
-[image: workflow]: https://s3-us-west-1.amazonaws.com/chrisrzhou/github/images/rshiny-ec2bootstrap/aws_ec2_workflow.png
-[image: ubuntu14.04]: https://s3-us-west-1.amazonaws.com/chrisrzhou/github/images/rshiny-ec2bootstrap/aws_ec2_ubuntu14.04.png
-[image: configure security groups]: https://s3-us-west-1.amazonaws.com/chrisrzhou/github/images/rshiny-ec2bootstrap/aws_ec2_configure_security_groups_complete.png
-[image: ec2 launch]: https://s3-us-west-1.amazonaws.com/chrisrzhou/github/images/rshiny-ec2bootstrap/aws_ec2_launch.png
-[image: create key pair]: https://s3-us-west-1.amazonaws.com/chrisrzhou/github/images/rshiny-ec2bootstrap/aws_ec2_create_keypair.png
-[image: dns name]: https://s3-us-west-1.amazonaws.com/chrisrzhou/github/images/rshiny-ec2bootstrap/aws_ec2_dns_name.png
+[image: workflow]: https://s3-us-west-1.amazonaws.com/chrisrzhou/github/RShiny-EC2Bootstrap/aws_ec2_workflow.png
+[image: ubuntu14.04]: https://s3-us-west-1.amazonaws.com/chrisrzhou/github/RShiny-EC2Bootstrap/aws_ec2_ubuntu14.04.png
+[image: configure security groups]: https://s3-us-west-1.amazonaws.com/chrisrzhou/github/RShiny-EC2Bootstrap/aws_ec2_configure_security_groups_complete.png
+[image: ec2 launch]: https://s3-us-west-1.amazonaws.com/chrisrzhou/github/RShiny-EC2Bootstrap/aws_ec2_launch.png
+[image: create key pair]: https://s3-us-west-1.amazonaws.com/chrisrzhou/github/RShiny-EC2Bootstrap/aws_ec2_create_keypair.png
+[image: dns name]: https://s3-us-west-1.amazonaws.com/chrisrzhou/github/RShiny-EC2Bootstrap/aws_ec2_dns_name.png
