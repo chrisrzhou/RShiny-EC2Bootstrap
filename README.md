@@ -77,7 +77,7 @@ shiny-server: 1.3.0.403
     
 -   Download the `shinybootstrap.pem` key pair.  We recommend that you place your `shinybootstrap.pem` key pair in a 
     safe folder.  [Ekuns](https://github.com/ekuns) has provided a great
-    [reuseable and general tip](https://github.com/chrisrzhou/RShiny-EC2Bootstrap/issues/2) on setting up and
+    [reuseable and general tip][general ssh] on setting up and
     managing `ssh` connections in general.
     
     - Copy the `shinybootstrap.pem` key into the `~/.ssh` folder
@@ -297,6 +297,7 @@ issues/corrections with this guide.  Thank you!
 
 -   Other resources:
     -   [Official RStudio shiny-server guide][rstudio shiny-server guide]
+    -   [General SSH config][general ssh]
     -   [Creating ElasticIP for maintaining "permanent" IP addresses][elastic ip]
     -   [AWS Route 53 to rename EC2 instances to domain address][aws route 53]
     -   [Stackoverflow][]
@@ -324,6 +325,7 @@ issues/corrections with this guide.  Thank you!
 [rstudio shiny-server guide]: http://rstudio.github.io/shiny-server/latest/
 [aws route 53]: http://aws.amazon.com/route53/
 [dplyr]: http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
+[General SSH]: https://github.com/chrisrzhou/RShiny-EC2Bootstrap/issues/2
 
 <!-- example section links -->
 [example1-ec2]: http://shiny.vis.datanaut.io/StateCrimeRates/
