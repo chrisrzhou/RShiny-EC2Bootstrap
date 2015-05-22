@@ -70,52 +70,47 @@ shiny-server: 1.3.0.403
 
 ## Register Key Pair
 -   With our EC2 instance set up, we need to register the key provided to us from Amazon with our local machine. 
-    (*Note that only one EC2 key can be registered to one machine.*)
 
 -   Amazon will prompty you to create a new key pair.  For this guide, we shall name the keypair `shinybootstrap`.
 
     ![image: create key pair][]
     
 -   Download the `shinybootstrap.pem` key pair.  We recommend that you place your `shinybootstrap.pem` key pair in a 
-    safe folder, but for purposes of this guide, we will assume that you are placing the file in a folder under the 
-    home directory `~/sshKeys`.
+    safe folder.  [Ekuns](https://github.com/ekuns) has provided a great
+    [reuseable and general tip](https://github.com/chrisrzhou/RShiny-EC2Bootstrap/issues/2) on setting up and
+    managing `ssh` connections in general.
     
-    ```bash
-    # create sshKeys folder in home directory
-    mkdir ~/sshKeys
+    - Copy the `shinybootstrap.pem` key into the `~/.ssh` folder
+    - Create and edit the file using a text editor in `~/.ssh/config` (config is the filename)
     
-    # navigate to your .pem directory and move the .pem file to the sshKeys folder
-    mv shinybootstrap.pem ~/sshKeys
+        ```
+        Host *
+            ServerAliveInterval 240
     
-    # grant sudo access to .pem file
-    chmod 400 ~/sshKeys/shinybootstrap.pem
-    ```
-    
--   **NOTE**: If you ever run into a `Permission denied (publickey)` error message, this is because you are not able 
-    to access the `.pem` file as a superuser.  Make sure that you have granted sudo access to the file using the 
-    command `chmod 400` as outlined above.
-
--   **OPTIONAL:** *Create a bash alias to access our EC2 instance.*
-    -   It is useful to create an alias to access the EC2 instance, otherwise we would be typing a long command to 
-        access our EC2 instance each time.  For this guide, we will create an alias `awslogin` and register this in 
-        the `bash_aliases` file using the `echo "blahblahablah" >> ~/.bash_aliases` command:
-   
-        ```bash
-        echo "alias awslogin='ssh -i ~/sshKeys/shinybootstrap.pem ubuntu@public_dns_name'" >> ~/.bash_aliases
+        Host aws-shiny
+            HostName public_dns_name
+            User ubuntu
+            IdentityFile ~/.ssh/aws-shiny.pem
+            ForwardX11 yes
+            ForwardX11Trusted yes
         ```
     
-    -   where `public_dns_name` is the public DNS name of your EC2 instance created e.g.
-        `ec2-54-183-2-10.us-west-1.compute.amazonaws.com` or the public IP itself `54.183.2.10`
-
-        ![image: dns name][]
+    - where `aws-shiny` is the alias hostname you are providing and `public_dns_name` is the name of your EC2 instance
+      e.g. `ec2-54-183-2-10.us-west-1.compute.amazonaws.com` or the public IP itself `54.183.2.10`
+      
+      ![image: dns name][]
+    
+    - Restart your terminal and you can now access your ubuntu EC2 server using:
+    
+        ```
+        ssh aws-shiny
+        ```
     
     -   **NOTE:** The public DNS name and public IP may not be static/permanent, e.g. their values can change when 
         `shiny-server` restarts.  For a full permanent solution to creating a `bash_alias`, you would need to create 
         an [Elastic IP][] (but we will defer that for the readers to the Amazon guide if readers wish to research the
         details).
     
-    -   Restart your terminal to access the changes and you should connect to your EC2 instance simply by typing 
-        `awslogin` in the terminal console.
 
 <sub>([back to contents](#contents))</sub>
 
