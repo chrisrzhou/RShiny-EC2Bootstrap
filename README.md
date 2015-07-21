@@ -179,7 +179,7 @@ shiny-server: 1.3.0.403
 
 -   **NOTE:** You can install a different version of `shiny-server` in the above command prompt by adjusting the 
     `shiny-server-version_number` in the `wget` and `gdebi` commands above.  You can check for the latest versions of
-     [RStudio shiny-server][] on the official site.
+     [RStudio shiny-server](https://www.rstudio.com/products/shiny/download-server/) on the official site.
 
 -   **OPTIONAL:** *Change the listening port from `3838` to default `80`*
     -   `shiny-server` by default runs applications on the URL and port: `http://domain:3838/`.  We can take the time
