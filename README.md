@@ -20,6 +20,7 @@ shiny-server: 1.3.0.403
 ## Contents
 * [Launch EC2](#launch-ec2)
 * [Register Key Pair](#register-key-pair)
+* [Create and enable swap file](#create-and-enable-swap-file)
 * [Install R](#install-r)
 * [Install R Packages](#install-r-packages)
 * [Install Shiny Server](#install-shiny-server)
@@ -115,6 +116,42 @@ shiny-server: 1.3.0.403
 <sub>([back to contents](#contents))</sub>
 
 ----------
+
+## Create and enable swap file
+
+-   This step is necessary when running on a T2.mirco EC2 instance. You won't be able to install certain R packages (e.g. `dplyr`, `tidyr`) without the additional allocated memory from the swap 
+
+-  First we need to create and enable the swap file:
+
+    ```bash
+    sudo fallocate -l 1G /swapfile
+    sudo chmod 600 /swapfile
+    sudo mkswap /swapfile
+    sudo swapon /swapfile
+    ```
+    
+-   Next, we need to make sure that the swap file is enabled even after rebooting the system
+
+-   Edit the `fstab``file with root privileges in your text editor:
+
+    ```bash
+    sudo nano /etc/fstab
+    ```
+
+-   At the bottom of the file, you need to add a line that will tell the operating system to automatically use the file you created:
+
+    ```
+    /swapfile   none    swap    sw    0   0
+    ```
+
+-   Save and close the file when you are finished.
+
+      
+<sub>([back to contents](#contents))</sub>   
+    
+----------
+
+
 
 ## Install R
 -   Phew! The tough parts are over, we can now move onto installing R in our EC2 instance!
@@ -257,11 +294,6 @@ shiny-server: 1.3.0.403
 -   You could run into issues with missing Python libraries and version requirements for R and various packages, but 
     most of them can be solved by searching on Stackoverflow and Google.
 
--   You could also encounter issues that result from the limited memory allocated in the EC2 instance, which would 
-    not complete installations of some packages (e.g. `dplyr`, `ggvis`).  If this is the case, the solution would be 
-    to install these packages on your local machine, and grab the uncompiled files in the local machine `R` libraries
-    and copy them over to your EC2 R libraries.  You have a few ways to transfer files from local machine to EC2 and 
-    I will refer you to Stackoverflow and Google on how to do so.
 
 -   Stackoverflow + Goole are most definitely the best teachers and guides out there for resolving problematic 
     packages.  My job here is to just inform on some of the issues you may encounter :)
@@ -294,6 +326,9 @@ issues/corrections with this guide.  Thank you!
 -   Shiny AWS EC2 Guides:
     -   [Tyler Hunt's guide to set up Shiny AWS EC2][tyler hunt]
     -   [Custom AWS inbound rules][aws inbound rules]
+    
+-   Digital Ocean Guides
+    -   [How To Add Swap on Ubuntu 14.04][do swap]
 
 -   Other resources:
     -   [Official RStudio shiny-server guide][rstudio shiny-server guide]
@@ -322,6 +357,7 @@ issues/corrections with this guide.  Thank you!
 <!-- resource section links -->
 [tyler hunt]: http://tylerhunt.co/2014/03/amazon-web-services-rstudio/
 [aws inbound rules]: http://www.r-bloggers.com/deploying-shiny-server-on-amazon-some-troubleshoots-and-solutions/
+[do swap]: https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04
 [rstudio shiny-server guide]: http://rstudio.github.io/shiny-server/latest/
 [aws route 53]: http://aws.amazon.com/route53/
 [dplyr]: http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
